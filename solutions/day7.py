@@ -39,7 +39,7 @@ def find_total_bags(search_color: str, all_bags: dict):
                 # print(bag_count)
     return bag_count
 
-nested_bag_count = find_total_bags('shiny gold', bags)
+nested_bag_count = find_total_bags('shiny gold', bags) - 1
 print(nested_bag_count)
 
 
