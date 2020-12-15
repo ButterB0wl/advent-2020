@@ -12,7 +12,7 @@ for rule in rules:
             break
         contents[content[2:]] = int(content[0])
     bags[color] = contents
-    print(color, bags[color])
+    # print(color, bags[color])
 
 def find_valid_bags(search_colors: set, all_bags: dict):
     valid_bags = set()
@@ -24,8 +24,24 @@ def find_valid_bags(search_colors: set, all_bags: dict):
     return valid_bags.union(find_valid_bags(valid_bags, all_bags))
 
 valid_bags = find_valid_bags('shiny gold', bags)
-print(valid_bags)
+# print(valid_bags)
 print(len(valid_bags))
+
+# part 2
+
+def find_total_bags(search_color: str, all_bags: dict):
+    bag_count = 1
+    for color, contents in all_bags.items():
+        if color == search_color:
+            # print(color, contents)
+            for k, v in contents.items():
+                bag_count += v * find_total_bags(k, all_bags)
+                # print(bag_count)
+    return bag_count
+
+nested_bag_count = find_total_bags('shiny gold', bags)
+print(nested_bag_count)
+
 
 
 
